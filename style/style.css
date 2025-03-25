@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Schriftart hinzugefügt */
+    background-color: #0D0D0D; /* Hintergrundfarbe geändert */
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px 20px 100px; /* Padding angepasst */
+    backdrop-filter: blur(10px); /* Hintergrund verschwommen */
+    position: sticky; /* Navbar mit dem Viewport mitgehen lassen */
+    top: 0;
+    z-index: 1000;
+}
+
+nav .logo img {
+    height: 50px;
+    margin-left: -85px;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    align-content: center;
+}
+
+nav .nav-links li {
+    display: inline;
+}
+
+nav .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav .language-selector button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+header {
+    text-align: left; /* Text linksbündig ausrichten */
+    padding: 100px; /* Padding angepasst */
+    padding-top: 140px; /* Platz für die feste Navbar */
+    margin-top: -70px;
+}
+
+header .header-content h1 {
+    font-size: 64px;
+    margin-bottom: 16px;
+    font-family: 'League Spartan', sans-serif; /* Schriftart hinzugefügt */
+    font-weight: 900; /* Black-Variante verwendet */
+}
+
+header .header-content p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    font-family: 'Inter', sans-serif; /* Schriftart hinzugefügt */
+    color: #D6D6D6;
+    line-height: 1.8em;
+}
+
+.buttons-full, .buttons-hollow {
+    position: relative;
+    display: inline-block;
+    padding: 16px 17px;
+    margin: 0 8px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 11px; /* Abgerundete Ecken hinzugefügt */
+    overflow: hidden;
+    transition: transform 0.3s; /* Übergang hinzugefügt */
+}
+
+.buttons-full {
+    background-color: #006400;
+    color: #fff;
+    border: none;
+}
+
+.buttons-hollow {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #006400;
+}
+
+.buttons-full:hover, .buttons-hollow:hover {
+    transform: scale(1.05); /* Vergrößerung bei Hover */
+}
+
+.buttons-hollow:hover {
+    color: #006400; /* Textfarbe bei Hover geändert */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border: 1px solid #006400;
+    border-radius: 11px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px 12px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Inter', sans-serif;
+}
+
+.dropdown-content a:hover {
+    background-color: #333;
+    border-radius: 11px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+header .header-logos {
+    display: flex;
+    gap: 16px;
+}
+
+header .header-logos img {
+    height: 50px;
+    margin: 16px 0;
+}
+
+.ticker {
+    height: 152px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.ticker::before, .ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+}
+
+.ticker::before {
+    left: 0;
+    background: linear-gradient(to right, #0D0D0D, transparent);
+}
+
+.ticker::after {
+    right: 0;
+    background: linear-gradient(to left, #0D0D0D, transparent);
+}
+
+.ticker-content {
+    display: flex;
+    align-items: center;
+    height: 40%;
+    animation: ticker 17s linear infinite;
+    justify-content: space-between; /* Gleichmäßige Verteilung der Bilder */
+}
+
+.ticker-content img {
+    height: 100%;
+    flex: 0 0 auto; /* Bilder gleichmäßig verteilen */
+    margin: 0 20px; /* Abstand zwischen den Bildern vergrößert */
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.blurry-gradient {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1500px;
+    height: 600px;
+    z-index: -1; /* Hinter anderen Elementen */
+    border-radius: 0% 32% 50% 80%;  
+    filter: blur(100px);
+    background: radial-gradient(circle at 50% 50%, #006400, rgba(76, 0, 255, 0));
+    opacity: 0.2;
+}
+
+footer {
+    max-width: 1200px;
+    background-color: #0D0D0D;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-left img {
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.footer-right {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+    flex-direction: row-reverse; /* Links von rechts nach links ausrichten */
+}
+
+.footer-links div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-made-in {
+    display: flex;
+    align-items: center;
+}
+
+.footer-made-in button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
