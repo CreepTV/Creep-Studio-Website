@@ -154,7 +154,7 @@ header .header-logos img {
     position: relative;
     margin-top: 70px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
 }
 
 .ticker::before, .ticker::after {
@@ -215,10 +215,11 @@ header .header-logos img {
 footer {
     padding: 100px;
     display: flex;
-    justify-content: space-between;
+        justify-content: space-between;
     align-items: flex-start;
     color: #fff;
     max-width: 1200px;
+    margin: 0 auto; /* Zentrierung des Footers im Viewport */
 }
 
 .footer-left {
@@ -284,7 +285,38 @@ footer {
 }
 
 .person{
-    display: flex;
+    isplay: flex;
     gap: 10px;
     align-items: center;
+}
+
+.about-section {
+    text-align: center;
+    padding-left: 90px;
+    padding-right: 90px;
+    margin-top: 0px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    padding-right: 60px;
+    padding-left: 60px;
+
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #D6D6D6;
+    margin-bottom: 20px;
+    margin-top: 20;
+}
+
+.about-section strong {
+    color: #fff;
 }
