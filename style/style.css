@@ -213,64 +213,78 @@ header .header-logos img {
 }
 
 footer {
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #fff;
     max-width: 1200px;
-    background-color: #0D0D0D;
-    padding: 40px 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 
 .footer-left {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: column; /* Elemente untereinander anordnen */
+    align-items: flex-start; /* Links ausrichten */
+    gap: 10px; /* Abstand zwischen den Elementen */
+}
+
+.footer-left .logo-and-name {
+    display: flex; /* Logo und Name nebeneinander anordnen */
+    align-items: center; /* Vertikale Ausrichtung */
+    gap: 10px; /* Abstand zwischen Logo und Name */
+    margin-bottom: 20px;
 }
 
 .footer-left img {
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* Entferne zusätzlichen Abstand */
+}
+
+.footer-left h2 {
+    font-size: 18px;
+    margin: 0; /* Entferne zusätzlichen Abstand */
+}
+
+.footer-left button {
+    background-color: #006400;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.footer-left button:hover {
+    background-color: #004d00;
 }
 
 .footer-right {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.footer-links {
-    display: flex;
-    gap: 40px;
-    flex-direction: row-reverse; /* Links von rechts nach links ausrichten */
-}
-
-.footer-links div {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
 }
 
-.footer-links a {
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.footer-right a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
 }
 
-.footer-made-in {
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+.person{
     display: flex;
+    gap: 10px;
     align-items: center;
-}
-
-.footer-made-in button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
 }
