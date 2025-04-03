@@ -285,7 +285,6 @@ footer {
 }
 
 .person{
-    isplay: flex;
     gap: 10px;
     align-items: center;
 }
@@ -351,6 +350,7 @@ footer {
 }
 
 .studio-card {
+    position: relative; /* Ensure tooltip is positioned relative to the card */
     background-color: #0F0F0F;
     border-radius: 10px;
     border: 0.01px solid #2d2d2d; /* Weißer Rand viel dünner gemacht */
@@ -359,7 +359,7 @@ footer {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    position: relative;
+    cursor: default; /* Ensure the default cursor is visible */
 }
 
 .studio-card::after {
@@ -379,6 +379,29 @@ footer {
 .studio-card:hover::after {
     opacity: 0.6;
     transform: translate(30px, 30px);
+}
+
+.tooltip {
+    position: fixed; /* Use fixed positioning for global cursor tracking */
+    background-color: #00310096;
+    color: #fff;
+    border: 1px solid #006400; /* Changed border to 1px */
+    padding: 10px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: none; /* Prevent tooltip from interfering with cursor */
+    opacity: 0;
+    visibility: hidden; /* Ensure tooltip is hidden initially */
+    transition: opacity 0.7s ease-in, visibility 0.2s ease-in; /* Faster disappearance */
+    z-index: 1000; /* Ensure tooltip is above other elements */
+}
+
+.studio-card:hover .tooltip {
+    opacity: 1;
+    visibility: visible; /* Make tooltip visible on hover */
 }
 
 .studio-card-header {

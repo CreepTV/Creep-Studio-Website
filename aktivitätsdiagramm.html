@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Aktivitätsdiagramm für Euro-Banknoten</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ece9e6, #ffffff);
+      margin: 0;
+      padding: 20px;
+    }
+    .diagram-container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .node {
+      background: #f2f9ff;
+      border: 2px solid #007ACC;
+      border-radius: 5px;
+      padding: 15px 20px;
+      margin: 10px 0;
+      width: 320px;
+      text-align: center;
+      position: relative;
+    }
+    .arrow-vertical {
+      width: 2px;
+      height: 30px;
+      background: #007ACC;
+      margin: 0 auto;
+    }
+    .decision {
+      width: 120px;
+      height: 120px;
+      background: #ffebcc;
+      border: 2px solid #FF9800;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0;
+      position: relative;
+    }
+    .decision span {
+      transform: rotate(-45deg);
+      font-weight: bold;
+      color: #FF9800;
+    }
+    .branches {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 20px 0;
+    }
+    .branch {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .branch .arrow-horizontal {
+      width: 40px;
+      height: 2px;
+      background: #007ACC;
+      margin-bottom: 10px;
+    }
+    .branch .arrow-diagonal {
+      width: 2px;
+      height: 30px;
+      background: #007ACC;
+      transform-origin: top;
+      margin-bottom: 10px;
+    }
+    .branch.ja .arrow-diagonal {
+      transform: rotate(-45deg);
+    }
+    .branch.nein .arrow-diagonal {
+      transform: rotate(45deg);
+    }
+    .merge {
+      width: 2px;
+      height: 30px;
+      background: #007ACC;
+      margin: 0 auto;
+    }
+    .frame {
+      border: 2px dashed #ccc;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px auto;
+      width: 90%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .frame-title {
+      position: absolute;
+      top: -15px;
+      left: 10px;
+      background: #fff;
+      padding: 0 5px;
+      font-weight: bold;
+      color: #333;
+    }
+    .start {
+      width: 50px;
+      height: 50px;
+      background: black;
+      border: 3px solid red;
+      border-radius: 50%;
+      position: relative;
+      margin: 20px auto;
+    }
+    .start-arrow {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 20px solid red;
+      position: relative;
+      top: 10px;
+      margin: auto;
+    }
+    .branch-label {
+      position: absolute;
+      top: -20px;
+      font-size: 14px;
+      font-weight: bold;
+      color: #007ACC;
+    }
+    .add-element-btn {
+      margin-top: 10px;
+      width: 40px;
+      height: 40px;
+      background-color: #007ACC;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="diagram-container">
+      <!-- Rahmenstruktur um alles -->
+      <div class="frame">
+        <div class="frame-title">main</div>
+        <div class="start"></div>
+        <div class="start-arrow"></div>
+        <div class="node">Input Seriennummer (SN)</div>
+        <div class="arrow-vertical"></div>
+        <div class="node">Extract leading letter for NZB</div>
+        <div class="arrow-vertical"></div>
+        <div class="node">Extract 10 digits</div>
+        <div class="arrow-vertical"></div>
+        <div class="node">Compute Quersumme of digits</div>
+        <div class="arrow-vertical"></div>
+        <div class="node">Compute Prüfziffer = (Quersumme mod 10)</div>
+        <div class="arrow-vertical"></div>
+        <div class="decision"><span>Vergleich?</span></div>
+        <div class="branches">
+          <div class="branch ja">
+            <span class="branch-label">Ja</span>
+            <div class="arrow-horizontal"></div>
+            <div class="arrow-diagonal"></div>
+            <div class="node">Output "Die Seriennummer ist gültig"</div>
+            <button class="add-element-btn">+</button>
+          </div>
+          <div class="branch nein">
+            <span class="branch-label">Nein</span>
+            <div class="arrow-horizontal"></div>
+            <div class="arrow-diagonal"></div>
+            <div class="node">Output "Falsche Seriennummer!"</div>
+            <button class="add-element-btn">+</button>
+          </div>
+        </div>
+        <div class="merge"></div>
+        <div class="node">Stop</div>
+        <button class="add-element-btn">+</button>
+      </div>
+    </div>
+    <div class="flow">
+      <button id="add-element-btn" style="margin-top: 20px; padding: 10px 20px; background-color: #007ACC; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Element hinzufügen
+      </button>
+      <div id="menu" style="display: none; margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background: #f9f9f9;">
+        <label for="element-type">Wählen Sie ein Element:</label>
+        <select id="element-type" style="margin-left: 10px; padding: 5px;">
+          <option value="node">Node</option>
+          <option value="decision">Decision</option>
+        </select>
+        <button id="add-btn" style="margin-left: 10px; padding: 5px 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Hinzufügen
+        </button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const addElementBtns = document.querySelectorAll('.add-element-btn');
+    const menu = document.getElementById('menu');
+    const addBtn = document.getElementById('add-btn');
+    const elementType = document.getElementById('element-type');
+    let targetButton = null;
+
+    addElementBtns.forEach((btn) => {
+      btn.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent click event from propagating
+        targetButton = event.target; // Store the button that was clicked
+        menu.style.display = 'block';
+        menu.style.position = 'absolute';
+        menu.style.top = `${event.pageY}px`; // Use pageY for accurate positioning
+        menu.style.left = `${event.pageX}px`; // Use pageX for accurate positioning
+      });
+    });
+
+    addBtn.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent click event from propagating
+      if (!targetButton) return;
+
+      const selectedType = elementType.value;
+
+      // Remove the current "Hinzufügen" button
+      const parent = targetButton.parentNode;
+      parent.removeChild(targetButton);
+
+      if (selectedType === 'node') {
+        const newNode = document.createElement('div');
+        const arrow = document.createElement('div');
+        const addButton = createAddButton();
+
+        // Create the new node
+        newNode.className = 'node';
+        newNode.textContent = 'Neues Node';
+
+        // Create the arrow
+        arrow.className = 'arrow-vertical';
+
+        // Insert the arrow, new node, and add button
+        parent.appendChild(arrow);
+        parent.appendChild(newNode);
+        parent.appendChild(addButton);
+      } else if (selectedType === 'decision') {
+        const newDecision = document.createElement('div');
+        const arrow = document.createElement('div');
+        const branches = document.createElement('div');
+        const branchJa = document.createElement('div');
+        const branchNein = document.createElement('div');
+        const arrowJa = document.createElement('div');
+        const arrowNein = document.createElement('div');
+        const nodeJa = document.createElement('div');
+        const nodeNein = document.createElement('div');
+        const labelJa = document.createElement('span');
+        const labelNein = document.createElement('span');
+        const addButton = createAddButton();
+
+        // Create the decision element
+        newDecision.className = 'decision';
+        newDecision.innerHTML = '<span>Vergleich?</span>';
+
+        // Create the vertical arrow
+        arrow.className = 'arrow-vertical';
+
+        // Create branches container
+        branches.className = 'branches';
+
+        // Create "Ja" branch
+        branchJa.className = 'branch ja';
+        labelJa.className = 'branch-label';
+        labelJa.textContent = 'Ja';
+        arrowJa.className = 'arrow-diagonal';
+        arrowJa.style.transform = 'rotate(-45deg)';
+        nodeJa.className = 'node';
+        nodeJa.textContent = 'Output "Die Seriennummer ist gültig"';
+        branchJa.appendChild(labelJa);
+        branchJa.appendChild(arrowJa);
+        branchJa.appendChild(nodeJa);
+        branchJa.appendChild(createAddButton());
+
+        // Create "Nein" branch
+        branchNein.className = 'branch nein';
+        labelNein.className = 'branch-label';
+        labelNein.textContent = 'Nein';
+        arrowNein.className = 'arrow-diagonal';
+        arrowNein.style.transform = 'rotate(45deg)';
+        nodeNein.className = 'node';
+        nodeNein.textContent = 'Output "Falsche Seriennummer!"';
+        branchNein.appendChild(labelNein);
+        branchNein.appendChild(arrowNein);
+        branchNein.appendChild(nodeNein);
+        branchNein.appendChild(createAddButton());
+
+        // Append branches to the branches container
+        branches.appendChild(branchJa);
+        branches.appendChild(branchNein);
+
+        // Insert the arrow, decision, branches, and add button
+        parent.appendChild(arrow);
+        parent.appendChild(newDecision);
+        parent.appendChild(branches);
+        parent.appendChild(addButton);
+      }
+
+      menu.style.display = 'none';
+      targetButton = null;
+    });
+
+    function createAddButton() {
+      const button = document.createElement('button');
+      button.className = 'add-element-btn';
+      button.textContent = '+';
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        targetButton = event.target;
+        menu.style.display = 'block';
+        menu.style.position = 'absolute';
+        menu.style.top = `${event.pageY}px`;
+        menu.style.left = `${event.pageX}px`;
+      });
+      return button;
+    }
+
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target) && !event.target.classList.contains('add-element-btn')) {
+        menu.style.display = 'none';
+        targetButton = null;
+      }
+    });
+
+    menu.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent menu clicks from closing the menu
+    });
+  </script>
+</body>
+</html>
