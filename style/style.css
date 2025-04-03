@@ -24,7 +24,7 @@ nav {
 
 nav .logo img {
     height: 50px;
-    margin-left: -85px;
+    margin-left: -40px;
 }
 
 nav .nav-links {
@@ -39,9 +39,15 @@ nav .nav-links li {
 }
 
 nav .nav-links a {
+    display: inline-block; /* Required for transform to work */
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: normal;
+    transition: transform 0.3s ease; /* Add transform transition */
+}
+
+nav .nav-links a:hover {
+    transform: scale(1.1); /* Slightly enlarge the link */
 }
 
 nav .language-selector button {
@@ -50,6 +56,84 @@ nav .language-selector button {
     border: none;
     padding: 8px 16px;
     cursor: pointer;
+}
+
+nav .dropdown {
+    position: relative;
+}
+
+nav .dropdown-menu {
+    display: none; /* Revert to hiding the dropdown menu by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0D0D0D;
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    border-radius: 9px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 220px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+nav .dropdown-menu li {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+nav .dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    padding-right: 10px;
+    border-radius: 9px;
+    width: 180px;
+}
+
+nav .dropdown-menu li a img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    border: 1.5px solid #444; /* Add border for the frame */
+    border-radius: 9px; /* Rounded corners for the frame */
+    padding: 5px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+nav .dropdown-menu li a:hover img {
+    border-color: #00a000; /* Change border color on hover */
+    transform: scale(1.0); /* Slightly enlarge the image on hover */
+}
+
+nav .dropdown-menu li a:hover .creepmedia {
+    border-color: #7f0dcb !important; /* Change border color on hover */
+    transform: scale(1.0); /* Slightly enlarge the image on hover */
+}
+
+nav .dropdown-menu li a:hover .all {
+    border-color: #284628 !important; /* Change border color on hover */
+    transform: scale(1.0); /* Slightly enlarge the image on hover */
+}
+
+nav .dropdown-menu li a:hover {
+    background-color: #333;
+    border-radius: 9px;
+}
+
+nav .dropdown:hover .dropdown-menu {
+    display: block; /* Show the dropdown menu on hover */
 }
 
 header {
@@ -209,6 +293,19 @@ header .header-logos img {
     border-radius: 0% 32% 50% 80%;  
     filter: blur(100px);
     background: radial-gradient(circle at 50% 50%, #006400, rgba(76, 0, 255, 0));
+    opacity: 0.2;
+}
+
+.blurry-gradient-creepmedia {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1500px;
+    height: 600px;
+    z-index: -1; /* Hinter anderen Elementen */
+    border-radius: 0% 32% 50% 80%;  
+    filter: blur(100px);
+    background: radial-gradient(circle at 50% 50%, #5830ea, rgba(76, 0, 255, 0));
     opacity: 0.2;
 }
 
@@ -431,4 +528,130 @@ footer {
 
 .studio-card:hover .studio-card-body img {
     transform: scale(1.05, 1.1); /* Slightly stretch in width first, then height */
+}
+
+.team-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0D0D0D;
+    color: #fff;
+}
+
+.team-section h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.team-section p {
+    font-size: 16px;
+    color: #D6D6D6;
+    margin-bottom: 40px;
+}
+
+.team-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: scale(1.05);
+}
+
+.team-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+.team-card p {
+    font-size: 14px;
+    color: #D6D6D6;
+    margin-bottom: 10px;
+}
+
+.faqs-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #0D0D0D;
+    color: #fff;
+}
+
+.faqs-section h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.faqs-section p {
+    font-size: 16px;
+    color: #D6D6D6;
+    margin-bottom: 40px;
+}
+
+.faq-items {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #333;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #444;
+}
+
+.faq-toggle {
+    color: #00a000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #1A1A1A;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #D6D6D6;
+    line-height: 1.6;
 }
