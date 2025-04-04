@@ -23,7 +23,9 @@ nav {
 }
 
 nav .logo img {
-    height: 50px;
+    height: 8vw; /* Dynamische Größe basierend auf der Breite des Viewports */
+    max-height: 70px; /* Maximale Höhe für größere Bildschirme */
+    min-height: 40px; /* Minimale Höhe für kleinere Bildschirme */
     margin-left: -40px;
 }
 
@@ -158,7 +160,7 @@ header .header-content p {
     line-height: 1.8em;
 }
 
-.buttons-full, .buttons-hollow {
+.buttons-full, .buttons-hollow, .buttons-hollow-lila{
     position: relative;
     display: inline-block;
     padding: 16px 17px;
@@ -181,6 +183,11 @@ header .header-content p {
     color: #fff;
     border: 1px solid #006400;
 }
+.buttons-hollow-lila {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #006400;
+}
 
 .buttons-full:hover, .buttons-hollow:hover {
     transform: scale(1.05); /* Vergrößerung bei Hover */
@@ -188,6 +195,10 @@ header .header-content p {
 
 .buttons-hollow:hover {
     color: #006400; /* Textfarbe bei Hover geändert */
+}
+
+.buttons-hollow-lila:hover {
+    color: #6453ff; /* Textfarbe bei Hover geändert */
 }
 
 .dropdown {
