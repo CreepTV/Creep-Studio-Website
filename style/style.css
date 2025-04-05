@@ -528,12 +528,17 @@ footer {
     margin: 0;
 }
 
+.studio-card-body {
+    display: flex; /* Flexbox für Zentrierung */
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+    height: 100%; /* Sicherstellen, dass der Container die gesamte Höhe einnimmt */
+}
+
 .studio-card-body img {
-    padding: 40px;
-    width: 60%;
-    justify-self: center;
-    height: auto;
-    display: block;
+    max-width: 230px; /* Bildgröße anpassen */
+    max-height: 100%; /* Bildgröße anpassen */
+    object-fit: contain; /* Bild proportional skalieren */
     transition: transform 0.5s ease; /* Smooth transition for scaling */
 }
 
