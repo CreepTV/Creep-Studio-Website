@@ -14,3 +14,49 @@ document.querySelectorAll('.studio-card').forEach(card => {
         tooltip.style.visibility = 'hidden'; // Ensure tooltip is hidden
     });
 });
+
+// Load header
+const headerPlaceholder = document.getElementById('header-placeholder');
+if (headerPlaceholder) {
+    const isCreepMedia = window.location.pathname.includes('CreepMedia');
+    const isCreepMusikStudios = window.location.pathname.includes('CreepMusikStudios');
+    const isSubPage = isCreepMedia || isCreepMusikStudios;
+    const headerPath = isSubPage ? '../header.html' : 'header.html';
+    fetch(headerPath)
+        .then(response => response.text())
+        .then(html => {
+            let adjustedHtml = html;
+            if (isSubPage) {
+                // Adjust paths
+                adjustedHtml = adjustedHtml.replace(/src="resources\//g, 'src="../resources/');
+                adjustedHtml = adjustedHtml.replace(/href="\/CreepMedia"/g, 'href="/creepmedia"');
+            }
+            headerPlaceholder.innerHTML = adjustedHtml;
+            if (isCreepMedia) {
+                const langButton = headerPlaceholder.querySelector('.buttons-hollow');
+                if (langButton) {
+                    langButton.style.borderColor = '#6453ff';
+                    langButton.classList.add('buttons-hollow-lila');
+                    const icons = langButton.querySelectorAll('.material-icons-round');
+                    icons.forEach(icon => icon.style.color = '#6453ff');
+                }
+                const dropdownContent = headerPlaceholder.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.style.borderColor = '#6453ff';
+                }
+            } else if (isCreepMusikStudios) {
+                const langButton = headerPlaceholder.querySelector('.buttons-hollow');
+                if (langButton) {
+                    langButton.style.borderColor = '#D4AF37';
+                    langButton.classList.add('buttons-hollow-gold');
+                    const icons = langButton.querySelectorAll('.material-icons-round');
+                    icons.forEach(icon => icon.style.color = '#D4AF37');
+                }
+                const dropdownContent = headerPlaceholder.querySelector('.dropdown-content');
+                if (dropdownContent) {
+                    dropdownContent.style.borderColor = '#D4AF37';
+                }
+            }
+        })
+        .catch(error => console.error('Error loading header:', error));
+}

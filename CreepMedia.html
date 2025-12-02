@@ -18,66 +18,7 @@
 <body>
     <div style="margin-top: -300px; margin-right: 40px;" class="blurry-gradient-creepmedia"></div> <!-- Blurry Gradient hinzugefügt -->
     <div class="container">
-        <nav>
-            <div class="logo">
-                <a href="../">
-                    <img src="..\resources\logo\CreepStudios_LogoWhite.png" alt="Creep Studio Logo">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#process">Process</a></li>
-                <li class="dropdown">
-                    <a href="#studios">Studios</a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="../#studios">
-                                <img class="all" src="..\resources/icons/all-icon.png" alt="All Icon">
-                                All
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/creepmedia">
-                                <img class="creepmedia" src="..\resources\logo\Creep Media_Logo.png" alt="CreepTV Media Icon">
-                                Creep Media
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creep-games">
-                                <img src="..\resources/icons/creep-games-icon.png" alt="CreepTV Games Icon">
-                                CreepTV Games
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creep-filmstudio">
-                                <img src="..\resources/icons/creep-filmstudio-icon.png" alt="Creep Filmstudio Icon">
-                                Creep Filmstudio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#creep-music-studios">
-                                <img src="..\resources/icons/creep-music-studios-icon.png" alt="Creep Musik Studios Icon">
-                                Creep Musik Studios
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#faqs">FAQs</a></li>
-            </ul>
-            <div class="dropdown">
-                <button style="border-color: #6453ff; font-size: 13px; width: auto; padding: 10px;" class="buttons-hollow-lila">
-                    <span class="material-icons-round" style="color: #6453ff; vertical-align: middle;">language</span>
-                    Language
-                    <span class="material-icons-round" style="color: #ffffff; vertical-align: middle;">arrow_drop_down</span>
-                </button>
-                <div class="dropdown-content" style="border-color: #6453ff;">
-                    <a href="#">English</a>
-                    <a href="#">Deutsch</a>
-                    <a href="#">Portugiesisch</a>
-                </div>
-            </div>
-        </nav>
+        <div id="header-placeholder"></div>
         <header>
             <div class="header-content">
                 <img style="width: 270px;" src="..\resources\logo\Creep Media_Logo.png" alt="Creep Media Logo">
@@ -158,7 +99,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
     <script>
         document.querySelectorAll('.faq-item').forEach(item => {
             const question = item.querySelector('.faq-question');
